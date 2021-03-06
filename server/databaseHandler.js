@@ -25,7 +25,7 @@ const getRandom = async (client=getNewClient()) => {
     const id = Math.floor(Math.random() * size);
     const result = await client.query(`SELECT * FROM cat_facts WHERE id = ${id};`);
     client.end()
-    return result.rows;
+    return result.rows[0];
 }
 
 module.exports = { getAll, getById, getRandom, getNewClient}
