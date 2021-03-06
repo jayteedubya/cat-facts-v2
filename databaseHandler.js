@@ -30,7 +30,7 @@ const getRandom = async (client=getNewClient()) => {
 
 
 
-module.exports = { getAll, getById, getRandom, getNewClient, dbTest }
+module.exports = { getAll, getById, getRandom, getNewClient }
 
 
 
