@@ -1,6 +1,7 @@
 const pg = require('pg')
 const getNewClient = () => {
-    return new pg.Client();
+    return new pg.Client({
+        connectionString: process.env.DATABASE_URL, ssl: {rejectUnauthorized: false} );
 }
 
 
@@ -27,6 +28,7 @@ const getRandom = async (client=getNewClient()) => {
     client.end()
     return result.rows[0];
 }
+
 
 module.exports = { getAll, getById, getRandom, getNewClient}
 
