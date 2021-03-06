@@ -1,0 +1,16 @@
+{
+  "name": "cat-fact-v2",
+  "version": "0.0.0",
+  "description": "Serves cat facts.",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Jacob Williams",
+  "license": "Unlicense",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "pg": "^8.5.1"
+  }
+}
