@@ -33,7 +33,7 @@ app.get('/:id', async (req, res, next) => {
     return;
 })
 
-app.get('/testDatabase22222', (req, res, next) => {
+app.get('/testDatabase22222', async (req, res, next) => {
     const response = await db.dbTest();
     res.render('lone', {fact: response});
 })
