@@ -26,17 +26,11 @@ const getRandom = async (client=getNewClient()) => {
     const result = await client.query(`SELECT * FROM cat_facts WHERE id = ${id};`);
     client.end()
     return result.rows[0];
-}
-
-const dbTest = async (client=getNewClient()) => {
-    client.connect()
-    const queryResult = await client.query('SELECT NOW()');
-    client.end()
-    return result.rows[0];
-}
+ }
 
 
-module.exports = { getAll, getById, getRandom, getNewClient, dbTest}
+
+module.exports = { getAll, getById, getRandom, getNewClient, dbTest }
 
 
 
