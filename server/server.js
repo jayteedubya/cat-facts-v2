@@ -11,6 +11,10 @@ app.get('/htmlTest', (req, res, next) => {
     res.render('main.ejs');
 })
 
+app.get('/', (req, res, next) => {
+    res.render('lone.ejs', {fact:''})
+})
+
 app.get('/All', async (req, res, next) => {
     const response = await db.getAll();
     res.render('all.ejs', {facts: response});
