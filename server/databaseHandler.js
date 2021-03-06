@@ -1,30 +1,34 @@
 const pg = require('pg')
-const _client = new pg.Client({user: "jakewilliams", host: "localhost", password: "", database: "jakewilliams", port: 5432});
+const getNewClient = () => {
+    return new pg.Client({user: "jakewilliams", host: "localhost", password: "", database: "jakewilliams", port: 5432});
+}
 
 
-const getAll = async (client=_client) => {
+const getAll = async (client=getNewClient()) => {
     client.connect();
-    const results = await _client.query('SELECT * FROM cat_facts;');
+    const results = await client.query('SELECT * FROM cat_facts;');
     client.end();
     return results.rows;
 }
 
-const getById = async (id, client=_client) => {
+const getById = async (id, client=getNewClient()) => {
     client.connect();
     const result = await client.query(`SELECT * FROM cat_facts WHERE id = ${id};`);
     client.end();
     return result.rows[0];
 }
 
-const getRandom = async (client=_client) => {
+const getRandom = async (client=getNewClient()) => {
     client.connect()
-    const size = await client.query('SELECT COUNT(*) FROM cat_facts;');
+    const countQueryResult = await client.query('SELECT COUNT(*) FROM cat_facts;');
+    size = countQueryResult.rows[0].count;
     const id = Math.floor(Math.random() * size);
-    const result = client.query(`SELECT * FROM cat_facts WHERE id = ${id};`);
+    const result = await client.query(`SELECT * FROM cat_facts WHERE id = ${id};`);
     client.end()
+    return result.rows;
 }
 
-module.exports = { getAll, getById, getRandom, _client}
+module.exports = { getAll, getById, getRandom, getNewClient}
 
 
 
