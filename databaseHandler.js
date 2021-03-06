@@ -1,6 +1,6 @@
 const pg = require('pg')
 const getNewClient = () => {
-    return new pg.Client({user: "jakewilliams", host: "localhost", password: "", database: "jakewilliams", port: 5432});
+    return new pg.Client();
 }
 
 
