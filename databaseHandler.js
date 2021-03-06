@@ -1,8 +1,7 @@
 const pg = require('pg')
 const getNewClient = () => {
-    return new pg.Client({
-        connectionString: process.env.DATABASE_URL, ssl: {rejectUnauthorized: false} );
-}
+    return new pg.Client({connectionString: process.env.DATABASE_URL, ssl: {rejectUnauthorized: false}})
+};
 
 
 const getAll = async (client=getNewClient()) => {
